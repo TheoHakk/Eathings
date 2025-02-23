@@ -1,10 +1,21 @@
 // Purpose: Defines an enum for the days of the week.
-enum DayOfWeek {
-    MONDAY = 1,
-    TUESDAY = 2,
-    WEDNESDAY = 3,
-    THURSDAY = 4,
-    FRIDAY = 5,
-    SATURDAY = 6,
-    SUNDAY = 7
+export enum DayOfWeek {
+    MONDAY = "Monday",
+    TUESDAY = "Tuesday",
+    WEDNESDAY = "Wednesday",
+    THURSDAY = "Thursday",
+    FRIDAY = "Friday",
+    SATURDAY = "Saturday",
+    SUNDAY = "Sunday"
+}
+
+// To have the translation of the enum value
+export const DayOfWeekTranslations: Record<DayOfWeek, string> = {
+    [DayOfWeek.MONDAY]: "Lundi",
+    [DayOfWeek.TUESDAY]: "Mardi",
+    [DayOfWeek.WEDNESDAY]: "Mercredi",
+    [DayOfWeek.THURSDAY]: "Jeudi",
+    [DayOfWeek.FRIDAY]: "Vendredi",
+    [DayOfWeek.SATURDAY]: "Samedi",
+    [DayOfWeek.SUNDAY]: "Dimanche"
 }
