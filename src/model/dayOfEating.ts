@@ -3,8 +3,8 @@ import {Meal} from "./meal";
 
 export class DayOfEating {
     //Creating tuples of PeriodOfDay and Meal
-    mealsOfDay: [PeriodOfDay, Meal][]
-    date: Date
+    mealsOfDay: [Meal][]
+    date : Date
 
     constructor(date: Date) {
         this.mealsOfDay = []
@@ -12,38 +12,24 @@ export class DayOfEating {
     }
 
     //Adding a meal to the mealsOfDay array, only if the periodOfDay is not already in the array
-    addMeal(periodOfDay: PeriodOfDay, meal: Meal) {
+    addMeal(meal: Meal) {
+        let alreadyMealForPeriod: boolean = false
         for (let i = 0; i < this.mealsOfDay.length; i++) {
-            if(this.mealsOfDay[i][0] == periodOfDay) {
-                this.mealsOfDay[i][1] = meal
-                return
-            } else {
-                throw new Error("This period of the day is already taken")
+            if (this.mealsOfDay[i][0].periodOfDay == meal.periodOfDay) {
+                alreadyMealForPeriod = true
             }
+        }
+        if (!alreadyMealForPeriod) {
+            this.mealsOfDay.push([meal])
         }
     }
 
     getMeal(periodOfDay: PeriodOfDay) {
         for(let i = 0; i < this.mealsOfDay.length; i++) {
-            if(this.mealsOfDay[i][0] == periodOfDay) {
-                return this.mealsOfDay[i][1]
+            if (this.mealsOfDay[i][0].periodOfDay == periodOfDay) {
+                return this.mealsOfDay[i]
             }
         }
         throw new Error("This period of the day is not in the array")
     }
-
-    changeMeal(periodOfDay: PeriodOfDay, meal: Meal) {
-        for(let i = 0; i < this.mealsOfDay.length; i++) {
-            if(this.mealsOfDay[i][0] == periodOfDay) {
-                this.mealsOfDay[i][1] = meal
-                return
-            }
-        }
-        throw new Error("This period of the day is not in the array")
-    }
-
-
-
-
-
 }
